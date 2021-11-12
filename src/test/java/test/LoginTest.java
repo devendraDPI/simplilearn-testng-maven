@@ -1,6 +1,8 @@
 package test;
 
 import java.io.IOException;
+
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -16,6 +18,7 @@ public class LoginTest extends Baseclass {
 		login.Login(UserNameVal,PasswordVal);
 		login.ErrorCheck();
 		report.endTest(test);
+		Assert.assertTrue(false);
 		
 	}
 	

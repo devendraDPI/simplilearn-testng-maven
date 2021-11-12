@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Simplilearn">
-              <span class="suite-name border-passed">Simplilearn</span>
+              <span class="suite-name border-failed">Simplilearn</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,7 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods,   3 passed</span>
+                    <span class="method-stats">3 methods, 1 failed,   2 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Simplilearn" class="hide-methods failed suite-Simplilearn"> (hide)</a> <!-- hide-methods failed suite-Simplilearn -->
+                      <a href="#" panel-name="suite-Simplilearn" class="show-methods failed suite-Simplilearn"> (show)</a> <!-- show-methods failed suite-Simplilearn -->
+                    </span>
+                    <div class="method-list-content failed suite-Simplilearn">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Simplilearn" title="test.LoginTest" hash-for-method="NegativeLogin(abc@gmail.com, Pass@15dfd)">NegativeLogin(abc@gmail.com, Pass@15dfd)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Simplilearn -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,11 +117,6 @@
                       <span>
                         <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Simplilearn" title="test.LoginTest" hash-for-method="ExcelTest">ExcelTest</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Simplilearn" title="test.LoginTest" hash-for-method="NegativeLogin(abc@gmail.com, Pass@15dfd)">NegativeLogin(abc@gmail.com, Pass@15dfd)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -127,6 +136,26 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Simplilearn" class="panel Simplilearn">
+          <div class="suite-Simplilearn-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">test.LoginTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="NegativeLogin(abc@gmail.com, Pass@15dfd)">
+                  </a> <!-- NegativeLogin(abc@gmail.com, Pass@15dfd) -->
+                  <span class="method-name">NegativeLogin</span>
+                  <span class="parameters">(abc@gmail.com, Pass@15dfd)</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [true] but found [false]
+	at test.LoginTest.NegativeLogin(LoginTest.java:21)
+... Removed 29 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Simplilearn-class-failed -->
           <div class="suite-Simplilearn-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -138,14 +167,6 @@
                   <a name="ExcelTest">
                   </a> <!-- ExcelTest -->
                   <span class="method-name">ExcelTest</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="NegativeLogin(abc@gmail.com, Pass@15dfd)">
-                  </a> <!-- NegativeLogin(abc@gmail.com, Pass@15dfd) -->
-                  <span class="method-name">NegativeLogin</span>
-                  <span class="parameters">(abc@gmail.com, Pass@15dfd)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -168,6 +189,9 @@
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Simplilearn&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;test.TestNgListenerExample&quot;/&gt;
+  &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
     &lt;parameter name=&quot;UserName&quot; value=&quot;abc@gmail.com&quot;/&gt;
     &lt;parameter name=&quot;CorrectPassword&quot; value=&quot;Pass@15dfd&quot;/&gt;
@@ -215,22 +239,22 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(3);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'ExcelTest')
+data.setCell(0, 1, 'PositiveLogin')
 data.setCell(0, 2, 'test.LoginTest')
-data.setCell(0, 3, 2641);
+data.setCell(0, 3, 4144);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'PositiveLogin')
+data.setCell(1, 1, 'ExcelTest')
 data.setCell(1, 2, 'test.LoginTest')
-data.setCell(1, 3, 2381);
+data.setCell(1, 3, 3632);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'NegativeLogin')
 data.setCell(2, 2, 'test.LoginTest')
-data.setCell(2, 3, 2286);
+data.setCell(2, 3, 3478);
 window.suiteTableData['Simplilearn']= { tableData: data, tableDiv: 'times-div-Simplilearn'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 7 seconds</span>
+              <span class="suite-total-time">Total running time: 11 seconds</span>
               <div id="times-div-Simplilearn">
               </div> <!-- times-div-Simplilearn -->
             </div> <!-- times-div -->
@@ -263,43 +287,45 @@ return data;
               </div> <!-- configuration-test before -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">509 ms</span>
+                <span class="method-start">819 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">ExcelTest</span>
-                <span class="method-start">1989 ms</span>
+                <span class="method-start">2721 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">teardown</span>
-                <span class="method-start">4631 ms</span>
+                <span class="method-start">6356 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">4714 ms</span>
+                <span class="method-start">6441 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">NegativeLogin(abc@gmail.com, Pass@15dfd)</span>
-                <span class="method-start">6136 ms</span>
+                <span class="method-start">8159 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">teardown</span>
-                <span class="method-start">8423 ms</span>
+                <span class="method-start">12394 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">8495 ms</span>
+                <span class="method-start">12471 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">PositiveLogin(abc@gmail.com, Pass@15dfd)</span>
-                <span class="method-start">9874 ms</span>
+                <span class="method-start">14342 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">teardown</span>
-                <span class="method-start">12256 ms</span>
+                <span class="method-start">18487 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-test after">
                 <span class="method-name">ReportTearDown</span>
-                <span class="method-start">12334 ms</span>
+                <span class="method-start">18634 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
